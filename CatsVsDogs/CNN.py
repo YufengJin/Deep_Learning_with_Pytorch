@@ -48,7 +48,7 @@ def get_dimension():
 	layer1 = nn.Conv2d(1,32,5) #one image input, padding size: 5, 32 output channels
 	layer2 = nn.Conv2d(32,64,5)
 	layer3 = nn.Conv2d(64,128,5)
-	layer4 = nn.Linear(128*2,512)
+	layer4 = nn.Linear(128*2*2,512)
 	layer5 = nn.Linear(512,2)
 	x = F.max_pool2d(F.relu(layer1(x)),(2,2))
 	print(x.shape)
@@ -56,7 +56,7 @@ def get_dimension():
 	print(x.shape)
 	x = F.max_pool2d(F.relu(layer3(x)),(2,2))
 	print(x.shape)
-	x = x.view(-1,128*2)
+	x = x.view(-1,128*2*2)
 	print(x.shape)
 	x = F.relu(layer4(x))
 	print(x.shape)
